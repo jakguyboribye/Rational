@@ -60,6 +60,9 @@ class Rational {
      */
     public void subtract(Rational x) {
         // to be completed
+        numerator = (numerator * x.denominator) - (x.numerator * denominator);
+        denominator = (denominator * x.denominator);
+        simplestForm();
     }
 
     /***
@@ -68,6 +71,9 @@ class Rational {
      */
     public void multiply(Rational x) { 
         // to be completed
+        numerator = (numerator * x.numerator);
+        denominator = (denominator * x.denominator);
+        simplestForm();
     }
 
     /***
@@ -76,6 +82,9 @@ class Rational {
      */
     public void divide(Rational x) {
         // to be completed
+        numerator = (numerator * x.denominator);
+        denominator = (denominator * x.numerator);
+        simplestForm();
     }
 
     /***
@@ -85,7 +94,12 @@ class Rational {
      */
     public boolean equals(Object x) {
         // to be completed
-        return true; // TODO: This needs to be modified.
+        if (this == x) return true;
+        if (!(x instanceof Rational)) return false;
+
+        Rational other = (Rational) x;
+
+        return this.numerator * other.denominator == this.denominator * other.numerator;// TODO: This needs to be modified.
     }
 
     /***
@@ -96,7 +110,12 @@ class Rational {
      */
     public long compareTo(Object x) {
         // to be completed
-        return -1; // TODO: this needs to be modified.
+        Rational other = (Rational) x;
+
+        long r1 = (long) this.numerator * other.denominator;
+        long r2 = (long) other.numerator * this.denominator;
+
+        return Long.compare(r1, r2);// TODO: this needs to be modified.
     }
 
     /***
@@ -105,7 +124,7 @@ class Rational {
      */
     public String toString() { 
         // to be completed
-        return ""; // TODO: This needs to be modified.
+        return numerator + "/" + denominator; // TODO: This needs to be modified.
     }
 
     public static void main(String[] args) {
